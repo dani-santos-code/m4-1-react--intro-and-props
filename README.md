@@ -356,9 +356,9 @@ function ChatStream(props) {
       {props.messages.map(message => {
 +       let messageType;
 +       if (message.user === props.currentUser) {
-+         messageType === 'sent';
++         messageType = 'sent';
 +       } else {
-+         messageType === 'received';
++         messageType = 'received';
 +       }
 +
 -        return <ChatMessage user={message.user} body={message.body} />;

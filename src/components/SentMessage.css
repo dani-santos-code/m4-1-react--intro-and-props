@@ -1,0 +1,17 @@
+.sent-message-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 15px;
+  height: 66px;
+  background-color: #a1a1f8;
+}
+
+.sent-chat-message {
+  justify-content: flex-end;
+  display: flex;
+  margin: 20px;
+}
