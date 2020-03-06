@@ -11,8 +11,12 @@ function ReceivedMessage(props) {
         alt="avatar"
       />
       <div className="message-wrapper">
-        <div className="message-username">{props.user.username}</div>
-        <div className="message-body">{props.body}</div>
+        <div>
+          <div className="message-username">{props.user.username}</div>
+        </div>
+        <div className="message-body">
+          <p>{props.body}</p>
+        </div>
       </div>
     </div>
   );

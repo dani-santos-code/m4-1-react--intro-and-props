@@ -78,8 +78,8 @@ const UserProfile = ({ username, email, bio }) => {
       Email: {email}
       Biography: {bio}
     </div>
-  )
-}
+  );
+};
 ```
 
 ---
@@ -89,14 +89,10 @@ const UserProfile = ({ username, email, bio }) => {
 Make the components reusable by using props.
 
 ```jsx
-function VideoPlayer({videoUrl, videoWidth, videoHeight, description}) {
+function VideoPlayer({ videoUrl, videoWidth, videoHeight, description }) {
   return (
     <div>
-      <video
-        src={videoUrl}
-        width={videoWidth}
-        height={videoHeight}
-      />
+      <video src={videoUrl} width={videoWidth} height={videoHeight} />
       <p>{description}</p>
     </div>
   );
@@ -106,7 +102,7 @@ function VideoPlayer({videoUrl, videoWidth, videoHeight, description}) {
 ---
 
 ```jsx
-function Tweet({videoUrl, name, handle, date, tagline}) {
+function Tweet({ videoUrl, name, handle, date, tagline }) {
   return (
     <div>
       <Avatar src={videoUrl} />
@@ -154,9 +150,9 @@ Say we have some data:
 
 ```js
 const storeItems = [
-  { id: 'a', price: 19.99, name: 'Monocle' },
-  { id: 'b', price: 209.99, name: 'Cane' },
-  { id: 'c', price: 44.99, name: 'Top Hat' },
+  { id: "a", price: 19.99, name: "Monocle" },
+  { id: "b", price: 209.99, name: "Cane" },
+  { id: "c", price: 44.99, name: "Top Hat" }
 ];
 ```
 
@@ -208,9 +204,9 @@ Next, **map over our data**, using the component once per item:
 
 ```jsx
 const storeItems = [
-  { id: 'a', price: 19.99, name: 'Monocle' },
-  { id: 'b', price: 209.99, name: 'Cane' },
-  { id: 'c', price: 44.99, name: 'Top Hat' },
+  { id: "a", price: 19.99, name: "Monocle" },
+  { id: "b", price: 209.99, name: "Cane" },
+  { id: "c", price: 44.99, name: "Top Hat" }
 ];
 
 function App() {
@@ -240,13 +236,14 @@ const pets = [
 <div>
   <h1 className="title">My pets:</h1>
   <ul>
-      {pets.map(pet => (
-        <PetInfo
+    {pets.map(pet => (
+      <PetInfo
         name={pet.name}
         age={pet.age}
         species={pet.species}
-        breed={pet.breed} />
-      ))}
+        breed={pet.breed}
+      />
+    ))}
   </ul>
 </div>;
 
@@ -257,7 +254,9 @@ const pets = [
 <div>
   <h1 className="title">My pets:</h1>
   <ul>
-      {pets.map(pet => <PetInfo pet={pet}/>)}
+    {pets.map(pet => (
+      <PetInfo pet={pet} />
+    ))}
   </ul>
 </div>;
 ```
@@ -293,7 +292,7 @@ const pizzaToppings = [
 <div>
   <Pizza>
       {pizzaToppings.filter(topping => topping.isVegetarian).map(topping =>
-      (<Topping name={topping.name}/>))}
+      topping && (<Topping name={topping.name }/>))}
   <Pizza>
 </div>;
 ```
