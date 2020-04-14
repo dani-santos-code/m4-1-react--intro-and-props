@@ -1,0 +1,15 @@
+.sent-message-wrapper {
+  height: 50px;
+  border-radius: 10px;
+  background-color: #a1a1f8;
+  margin: 20px;
+}
+
+.sent-chat-message {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.sent-message-body {
+  padding: 0 8px;
+}

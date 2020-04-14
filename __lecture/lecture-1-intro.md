@@ -180,6 +180,13 @@ let age = 10;
 </div>;
 ```
 
+```html
+<div class="wrapper">
+  <img src="/images/cake.jpg"/>
+  <p>Happy 10th birthday!</p>
+</div>
+```
+
 ---
 
 Convert this one too:
@@ -197,7 +204,23 @@ let agreeToTerms = false;
   )}
 </div>;
 ```
+```html
+  <div>
+    <label for="terms-of-service">
+      <input type="checkbox" id="terms-of-service" /> I agree to the terms
+    </label>
+    <div id="souldiv" style="display: none;">YOUR SOUL BELONGS TO ME MWAHAHAHAHAAAAAAHHHHHH!!!1</div>
+  </div>;
+```
+s
+```javascript
+let agreeToTerms = false;
+const hiddenDiv =  document.getElementbyId(souldiv);
 
+if(agreeToTerms) {
+  hiddenDiv.style.display = "block";
+}
+```
 ---
 
 Convert:
@@ -263,7 +286,52 @@ const pets = [
   </ul>
 </div>;
 ```
+```html
+<div>
+  <h1 class="title">My pets:</h1>
+  <ul>
+    <li>
+      <h3>Bark Obama</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Species</th>
+            <th>Breed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>3</td>
+            <td>dog</td>
+            <td>Labradoodle</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
 
+    <li>
+      <h3>Chairman Meow</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Age</th>
+            <th>Species</th>
+            <th>Breed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>8</td>
+            <td>cat</td>
+            <td>ragdoll</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</div>
+```
 ---
 
 # Rendering

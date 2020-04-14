@@ -156,9 +156,9 @@ In our `src/data.js` file, we see that the `messages` array takes this shape:
 [
   {
     user: users.elaine,
-    body: 'How about you bring me back something?',
-    timestamp: '11:38',
-  },
+    body: "How about you bring me back something?",
+    timestamp: "11:38"
+  }
   /* ...lots more like this */
 ];
 ```
@@ -241,9 +241,9 @@ Create two new files, `src/ChatMessage.js` and `src/ChatMessage.css`. Write the 
 > **Please no copy/paste!** You'll write _a lot_ of new components over this module. It's worth taking the time to get used to writing them out.
 
 ```js
-import React from 'react';
+import React from "react";
 
-import './ChatMessage.css';
+import "./ChatMessage.css";
 
 function ChatMessage(props) {
   return <div className="chat-message"></div>;
@@ -356,9 +356,9 @@ function ChatStream(props) {
       {props.messages.map(message => {
 +       let messageType;
 +       if (message.user === props.currentUser) {
-+         messageType === 'sent';
++         messageType = 'sent';
 +       } else {
-+         messageType === 'received';
++         messageType = 'received';
 +       }
 +
 -        return <ChatMessage user={message.user} body={message.body} />;
@@ -411,7 +411,7 @@ Here's our new `ChatMessage` component:
 
 ```jsx
 function ChatMessage(props) {
-  if (props.messageType === 'sent') {
+  if (props.messageType === "sent") {
     return <SentMessage message={props.message} />;
   } else {
     return <ReceivedMessage message={props.message} />;

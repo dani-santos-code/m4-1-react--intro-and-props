@@ -78,8 +78,8 @@ const UserProfile = ({ username, email, bio }) => {
       Email: {email}
       Biography: {bio}
     </div>
-  )
-}
+  );
+};
 ```
 
 ---
@@ -89,15 +89,11 @@ const UserProfile = ({ username, email, bio }) => {
 Make the components reusable by using props.
 
 ```jsx
-function VideoPlayer(props) {
+function VideoPlayer({ videoUrl, videoWidth, videoHeight, description }) {
   return (
     <div>
-      <video
-        src="http://youtube.com/some-video"
-        width={480}
-        height={300}
-      />
-      <p>Cat playing the piano!!</p>
+      <video src={videoUrl} width={videoWidth} height={videoHeight} />
+      <p>{description}</p>
     </div>
   );
 }
@@ -106,23 +102,24 @@ function VideoPlayer(props) {
 ---
 
 ```jsx
-function Tweet(props) {
+function Tweet({ videoUrl, name, handle, date, tagline }) {
   return (
     <div>
-      <Avatar src="/images/bunny.jpg" />
+      <Avatar src={videoUrl} />
       <div>
         <p>
-          <span className="user-name">Mr. Bunny</span>
-          <span className="handle">@mr-bunny</span>
-          <span className="date">Oct 29th</span>
+          <span className="user-name">{name}</span>
+          <span className="handle">{handle}</span>
+          <span className="date">{date}</span>
         </p>
-        <p>Alfalfa is the best food don't @ me</p>
+        <p>{tagline}</p>
         <div>
           <button>Reply</button>
           <button>Retweet</button>
           <button>Like</button>
           <button>Share</button>
         </div>
+        <Buttons />
       </div>
     </div>
   );
@@ -135,11 +132,10 @@ function Tweet(props) {
 function Header(props) {
   return (
     <header>
-      <h1>My great website</h1>
-
+      <h1>{props.title}</h1>
       <nav>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
+        <a href={props.nav.first.url}>{props.nav.first.label}</a>
+        <a href={props.nav.second.contact}>{props.nav.second.label}</a>
       </nav>
     </header>
   );
@@ -154,9 +150,9 @@ Say we have some data:
 
 ```js
 const storeItems = [
-  { id: 'a', price: 19.99, name: 'Monocle' },
-  { id: 'b', price: 209.99, name: 'Cane' },
-  { id: 'c', price: 44.99, name: 'Top Hat' },
+  { id: "a", price: 19.99, name: "Monocle" },
+  { id: "b", price: 209.99, name: "Cane" },
+  { id: "c", price: 44.99, name: "Top Hat" }
 ];
 ```
 
@@ -208,12 +204,12 @@ Next, **map over our data**, using the component once per item:
 
 ```jsx
 const storeItems = [
-  { id: 'a', price: 19.99, name: 'Monocle' },
-  { id: 'b', price: 209.99, name: 'Cane' },
-  { id: 'c', price: 44.99, name: 'Top Hat' },
+  { id: "a", price: 19.99, name: "Monocle" },
+  { id: "b", price: 209.99, name: "Cane" },
+  { id: "c", price: 44.99, name: "Top Hat" }
 ];
 
-function App(props) {
+function App() {
   return (
     <div>
       {storeItems.map(item => (
@@ -240,18 +236,27 @@ const pets = [
 <div>
   <h1 className="title">My pets:</h1>
   <ul>
-    <PetInfo
-      name={pets[0].name}
-      age={pets[0].age}
-      species={pets[0].species}
-      breed={pets[0].breed}
-    />
-    <PetInfo
-      name={pets[1].name}
-      age={pets[1].age}
-      species={pets[1].species}
-      breed={pets[1].breed}
-    />
+    {pets.map(pet => (
+      <PetInfo
+        name={pet.name}
+        age={pet.age}
+        species={pet.species}
+        breed={pet.breed}
+      />
+    ))}
+  </ul>
+</div>;
+
+const pets = [
+  /* omitted */
+];
+
+<div>
+  <h1 className="title">My pets:</h1>
+  <ul>
+    {pets.map(pet => (
+      <PetInfo pet={pet} />
+    ))}
   </ul>
 </div>;
 ```
@@ -263,14 +268,9 @@ const forecasts = [4, -3, 1, 9, 4, 2, -6];
 
 <div>
   <h1>Weather forecast for the week ahead:</h1>
-
-  <Day>4 degrees</Day>
-  <Day>-3 degrees</Day>
-  <Day>1 degrees</Day>
-  <Day>9 degrees</Day>
-  <Day>4 degrees</Day>
-  <Day>2 degrees</Day>
-  <Day>-6 degrees</Day>
+  {forecasts.map(forecast=> (
+    <Day>{forecast} degrees<Day/>
+  ))}
 </div>;
 ```
 
@@ -288,6 +288,13 @@ const pizzaToppings = [
   <Topping name="green pepper" />
   <Topping name="broccoli" />
 </Pizza>
+
+<div>
+  <Pizza>
+      {pizzaToppings.filter(topping => topping.isVegetarian).map(topping =>
+      topping && (<Topping name={topping.name }/>))}
+  <Pizza>
+</div>;
 ```
 
 Hint: You'll need `filter` as well as `map`
